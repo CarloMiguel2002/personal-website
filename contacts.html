@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts - Carlo Miguel Geronimo</title>
+         <link href="contacts.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">CONTACTS</h1>
+            <p class="subtitle">Let's get in touch</p>
+        </div>
+
+        <div class="content">
+            <div class="left-section">
+                <h2 class="cta-title">Don't be shy !</h2>
+                <p class="cta-text">
+                    Looking for a partner who can bring fresh ideas to your projects? I'm the developer you need! I'm always excited to hear about new projects and explore how I can contribute to your success. Don't hesitate to reach out to me and let's collaborate to make your visions a reality. Contact me today and let's get started!
+                </p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h3>Location</h3>
+                            <p>Makati, Philippines</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-details">
+                            <h3>Mail Me</h3>
+                            <p>carlomiguel.dev@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="center-section">
+                <div class="social-links">
+                    <a href="https://github.com/CarloMiguel2002" class="social-btn github-btn" target="_blank" rel="noopener noreferrer">
+                        <img src="gett.png" alt="GitHub" class="social-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-icon" style="display: none;">GH</div>
+                        <div class="social-tooltip">GitHub</div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/carlo-miguel-geronimo-011870372/" class="social-btn linkedin-btn" target="_blank" rel="noopener noreferrer">
+                        <img src="business.png" alt="LinkedIn" class="social-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-icon" style="display: none;">LI</div>
+                        <div class="social-tooltip">LinkedIn</div>
+                    </a>
+                    <a href="https://www.facebook.com/carlo.miguel.geronimo.2025/" class="social-btn facebook-btn" target="_blank" rel="noopener noreferrer">
+                        <img src="facebook.png" alt="Facebook" class="social-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-icon" style="display: none;">FB</div>
+                        <div class="social-tooltip">Facebook</div>
+                    </a>
+                    <a href="https://buymeacoffee.com/cmig090e?new=1" class="social-btn portfolio-btn" target="_blank" rel="noopener noreferrer">
+                        <img src="cfe.png" alt="Portfolio" class="social-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-icon" style="display: none;">PF</div>
+                        <div class="social-tooltip">Portfolio</div>
+                    </a>
+                    <a href="https://www.instagram.com/carlomig8008/" class="social-btn instagram-btn" target="_blank" rel="noopener noreferrer">
+                        <img src="instagram.png" alt="Instagram" class="social-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="placeholder-icon" style="display: none;">IG</div>
+                        <div class="social-tooltip">Instagram</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="right-section">
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <a href="Landing Page.html" class="circle-btn home-btn" onclick="handleClick('home')">
+                🏠
+                <div class="tooltip">Home</div>
+            </a>
+            <a href="info.html" class="circle-btn about-btn" onclick="handleClick('about')">
+                👤
+                <div class="tooltip">About</div>
+            </a>
+            <a href="#contact" class="circle-btn contact-btn" onclick="handleClick('contact')">
+                ✉️
+                <div class="tooltip">Contact</div>
+            </a>
+        </div>
+    </div>
+
+    <div class="notification" id="notification"></div>
+
+    <script>
+        function handleClick(section) {
+            const notification = document.getElementById('notification');
+            const messages = {
+                home: 'Welcome to my portfolio! 🏠',
+                about: 'Learn more about my journey! 👤',
+                contact: 'Currently viewing Contacts! ✉️'
+            };
+            
+            notification.textContent = messages[section];
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+            
+            const link = event.target.closest('.circle-btn');
+            if (link) {
+                link.style.animation = 'pulse 0.6s ease-out';
+                
+                setTimeout(() => {
+                    link.style.animation = '';
+                }, 600);
+            }
+        }
+
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.width = Math.random() * 4 + 2 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.background = `hsl(${Math.random() * 60 + 180}, 70%, 60%)`;
+            particle.style.borderRadius = '50%';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.top = window.innerHeight + 'px';
+            particle.style.pointerEvents = 'none';
+            particle.style.opacity = '0.6';
+            particle.style.zIndex = '1';
+            
+            document.body.appendChild(particle);
+            
+            const duration = Math.random() * 3000 + 2000;
+            const drift = (Math.random() - 0.5) * 200;
+            
+            particle.animate([
+                { transform: 'translateY(0px) translateX(0px)', opacity: 0.6 },
+                { transform: `translateY(-${window.innerHeight + 100}px) translateX(${drift}px)`, opacity: 0 }
+            ], {
+                duration: duration,
+                easing: 'ease-out'
+            }).addEventListener('finish', () => {
+                particle.remove();
+            });
+        }
+
+        setInterval(createParticle, 2000);
+
+        document.querySelectorAll('.social-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                ripple.style.position = 'absolute';
+                ripple.style.width = '100px';
+                ripple.style.height = '100px';
+                ripple.style.background = 'rgba(255, 255, 255, 0.3)';
+                ripple.style.borderRadius = '50%';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.left = '50%';
+                ripple.style.top = '50%';
+                ripple.style.marginLeft = '-50px';
+                ripple.style.marginTop = '-50px';
+                ripple.style.pointerEvents = 'none';
+                ripple.style.zIndex = '1000';
+                
+                this.appendChild(ripple);
+                
+                ripple.animate([
+                    { transform: 'scale(0)', opacity: 1 },
+                    { transform: 'scale(1)', opacity: 0 }
+                ], {
+                    duration: 600,
+                    easing: 'ease-out'
+                }).addEventListener('finish', () => {
+                    ripple.remove();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
