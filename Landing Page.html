@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carlo Miguel Geronimo - Web Developer</title>
+    <link href="landingpage.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h1 class="name">I'm Carlo Miguel Geronimo - Web Developer</h1>
+            <p class="description">
+                I'm a Filipino Based Web Developer focused on innovation and quality experiences. I am passionate about solving problems and delivering value through my projects.
+            </p>
+        </div>
+        
+        <div class="sidebar">
+            <a href="#home" class="circle-btn home-btn" onclick="handleClick('home')">
+                🏠
+                <div class="tooltip">Home</div>
+            </a>
+            <a href="info.html" class="circle-btn about-btn" onclick="handleClick('about')">
+                👤
+                <div class="tooltip">About</div>
+            </a>
+            <a href="contacts.html" class="circle-btn contact-btn" onclick="handleClick('contact')">
+                ✉️
+                <div class="tooltip">Contact</div>
+            </a>
+        </div>
+    </div>
+
+    <div class="notification" id="notification"></div>
+
+    <script>
+        function handleClick(section) {
+            const notification = document.getElementById('notification');
+            const messages = {
+                home: 'Welcome to my portfolio! 🏠',
+                about: 'Learn more about my journey! 👤',
+                contact: 'Let\'s connect and collaborate! ✉️'
+            };
+            
+            notification.textContent = messages[section];
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+            
+            const link = event.target.closest('.circle-btn');
+            if (link) {
+                link.style.animation = 'pulse 0.6s ease-out';
+                
+                setTimeout(() => {
+                    link.style.animation = '';
+                }, 600);
+            }
+        }
+
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.width = Math.random() * 4 + 2 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.background = `hsl(${Math.random() * 60 + 180}, 70%, 60%)`;
+            particle.style.borderRadius = '50%';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.top = window.innerHeight + 'px';
+            particle.style.pointerEvents = 'none';
+            particle.style.opacity = '0.6';
+            
+            document.body.appendChild(particle);
+            
+            const duration = Math.random() * 3000 + 2000;
+            const drift = (Math.random() - 0.5) * 200;
+            
+            particle.animate([
+                { transform: 'translateY(0px) translateX(0px)', opacity: 0.6 },
+                { transform: `translateY(-${window.innerHeight + 100}px) translateX(${drift}px)`, opacity: 0 }
+            ], {
+                duration: duration,
+                easing: 'ease-out'
+            }).addEventListener('finish', () => {
+                particle.remove();
+            });
+        }
+
+        setInterval(createParticle, 2000);
+
+        document.addEventListener('mousemove', (e) => {
+            const cursor = document.querySelector('.container');
+            if (cursor) {
+                const x = (e.clientX / window.innerWidth) * 10;
+                const y = (e.clientY / window.innerHeight) * 10;
+                cursor.style.transform = `translate(${x}px, ${y}px)`;
+            }
+        });
+    </script>
+</body>
+</html>

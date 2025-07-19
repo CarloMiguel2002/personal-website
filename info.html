@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Carlo Miguel Geronimo</title>
+     <link href="info.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">ABOUT ME</h1>
+            <p class="subtitle">Get to know me better</p>
+        </div>
+
+        <div class="content">
+            <div class="left-section">
+                <div class="section">
+                    <h2 class="section-title">Personal Infos</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">First name</span>
+                            <span class="info-value">Carlo</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Location</span>
+                            <span class="info-value">Makati, Philippines</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Last name</span>
+                            <span class="info-value">Geronimo</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Email</span>
+                            <span class="info-value">carlomiguel.dev0@gmail.com</span>
+                        </div>
+                        <div class="info-item languages">
+                            <span class="info-label">Languages</span>
+                            <span class="info-value">English, Tagalog</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">Education</h2>
+                    <div class="education-item">
+                        <div class="education-year">2023</div>
+                        <div class="education-details">
+                            <h3>Bachelor of Science - Computer Science</h3>
+                        </div>
+                    </div>
+                    <div class="education-item">
+                        <div class="education-year">2016</div>
+                        <div class="education-details">
+                            <h3>Jesus Reigns Christian Academy</h3>
+                            <p>Senior High School - STEM Strand<br>Junior High School</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-section">
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3 class="skill-title">3+</h3>
+                        <p class="skill-subtitle">years of experience</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3 class="skill-title">HTML</h3>
+                        <ul class="skill-list">
+                            <li>Semantic, accessible markup</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <h3 class="skill-title">CSS</h3>
+                        <ul class="skill-list">
+                            <li>Flexbox, Grid</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <h3 class="skill-title">JavaScript</h3>
+                        <ul class="skill-list">
+                            <li>ES6+, DOM, async</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <h3 class="skill-title">PHP</h3>
+                        <ul class="skill-list">
+                            <li>OOP, MySQL, form handling</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <h3 class="skill-title">Node.js</h3>
+                        <ul class="skill-list">
+                            <li>Express.js, REST APIs</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <a href="Landing Page.html" class="circle-btn home-btn" onclick="handleClick('home')">
+                🏠
+                <div class="tooltip">Home</div>
+            </a>
+            <a href="#about" class="circle-btn about-btn" onclick="handleClick('about')">
+                👤
+                <div class="tooltip">About</div>
+            </a>
+            <a href="contacts.html" class="circle-btn contact-btn" onclick="handleClick('contact')">
+                ✉️
+                <div class="tooltip">Contact</div>
+            </a>
+        </div>
+    </div>
+
+    <div class="notification" id="notification"></div>
+
+    <script>
+        function handleClick(section) {
+            const notification = document.getElementById('notification');
+            const messages = {
+                home: 'Welcome to my portfolio! 🏠',
+                about: 'Currently viewing About Me! 👤',
+                contact: 'Let\'s connect and collaborate! ✉️'
+            };
+            
+            notification.textContent = messages[section];
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+            
+            // Add visual feedback
+            const link = event.target.closest('.circle-btn');
+            if (link) {
+                link.style.animation = 'pulse 0.6s ease-out';
+                
+                setTimeout(() => {
+                    link.style.animation = '';
+                }, 600);
+            }
+        }
+
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.width = Math.random() * 4 + 2 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.background = `hsl(${Math.random() * 60 + 180}, 70%, 60%)`;
+            particle.style.borderRadius = '50%';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.top = window.innerHeight + 'px';
+            particle.style.pointerEvents = 'none';
+            particle.style.opacity = '0.6';
+            particle.style.zIndex = '1';
+            
+            document.body.appendChild(particle);
+            
+            const duration = Math.random() * 3000 + 2000;
+            const drift = (Math.random() - 0.5) * 200;
+            
+            particle.animate([
+                { transform: 'translateY(0px) translateX(0px)', opacity: 0.6 },
+                { transform: `translateY(-${window.innerHeight + 100}px) translateX(${drift}px)`, opacity: 0 }
+            ], {
+                duration: duration,
+                easing: 'ease-out'
+            }).addEventListener('finish', () => {
+                particle.remove();
+            });
+        }
+
+        setInterval(createParticle, 2000);
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-card, .education-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
