@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacts - Carlo Miguel Geronimo</title>
-         <link href="contacts.css" rel="stylesheet">
+     <link href="contacts.css" rel="stylesheet">
+
 </head>
 <body>
     <div class="container">
@@ -72,21 +73,22 @@
             </div>
         </div>
 
-        <div class="sidebar">
-            <a href="index.html" class="circle-btn home-btn" onclick="handleClick('home')">
-                🏠
-                <div class="tooltip">Home</div>
-            </a>
-            <a href="info.html" class="circle-btn about-btn" onclick="handleClick('about')">
-                👤
-                <div class="tooltip">About</div>
-            </a>
-            <a href="#contact" class="circle-btn contact-btn" onclick="handleClick('contact')">
-                ✉️
-                <div class="tooltip">Contact</div>
-            </a>
-        </div>
+      <nav class="bottom-nav">
+    <div class="nav-container">
+        <a href="index.html" class="nav-btn home-btn" onclick="handleClick('home')">
+            🏠
+            <div class="nav-label">Home</div>
+        </a>
+        <a href="info.html" class="nav-btn about-btn" onclick="handleClick('about')">
+            👤
+            <div class="nav-label">About</div>
+        </a>
+        <a href="#contact" class="nav-btn contact-btn" onclick="handleClick('contact')">
+            ✉️
+            <div class="nav-label">Contact</div>
+        </a>
     </div>
+</nav>
 
     <div class="notification" id="notification"></div>
 
