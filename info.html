@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me - Carlo Miguel Geronimo</title>
-     <link href="info.css" rel="stylesheet">
+    <link href="info.css" rel="stylesheet">
 
 </head>
 <body>
@@ -99,22 +99,24 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="sidebar">
-            <a href="index.html" class="circle-btn home-btn" onclick="handleClick('home')">
+    <nav class="bottom-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-btn home-btn" onclick="handleClick('home')">
                 🏠
-                <div class="tooltip">Home</div>
+                <div class="nav-label">Home</div>
             </a>
-            <a href="#about" class="circle-btn about-btn" onclick="handleClick('about')">
+            <a href="#about" class="nav-btn about-btn" onclick="handleClick('about')">
                 👤
-                <div class="tooltip">About</div>
+                <div class="nav-label">About</div>
             </a>
-            <a href="contacts.html" class="circle-btn contact-btn" onclick="handleClick('contact')">
+            <a href="contacts.html" class="nav-btn contact-btn" onclick="handleClick('contact')">
                 ✉️
-                <div class="tooltip">Contact</div>
+                <div class="nav-label">Contact</div>
             </a>
         </div>
-    </div>
+    </nav>
 
     <div class="notification" id="notification"></div>
 
@@ -134,8 +136,7 @@
                 notification.classList.remove('show');
             }, 3000);
             
-            // Add visual feedback
-            const link = event.target.closest('.circle-btn');
+            const link = event.target.closest('.nav-btn');
             if (link) {
                 link.style.animation = 'pulse 0.6s ease-out';
                 
@@ -192,6 +193,26 @@
         document.querySelectorAll('.skill-card, .education-item').forEach(el => {
             observer.observe(el);
         });
+
+        const navBtns = document.querySelectorAll('.nav-btn');
+        navBtns.forEach(btn => {
+            btn.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.95) translateY(-2px)';
+            });
+            
+            btn.addEventListener('touchend', function() {
+                this.style.transform = '';
+            });
+        });
+
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function (event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
     </script>
 </body>
 </html>
